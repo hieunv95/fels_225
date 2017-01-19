@@ -21,7 +21,9 @@
                     </div>
                     <div class="pull-right">
                         <a class="btn btn-primary"
-                            href="{{ action('Admin\CategoryController@create') }}">@lang('messages.add')</a>
+                            href="{{ action('Admin\CategoryController@create') }}">
+                            @lang('messages.add')
+                        </a>
                     </div>
                 </div>
                 <div class="panel-body">

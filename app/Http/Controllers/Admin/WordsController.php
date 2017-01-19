@@ -39,10 +39,11 @@ class WordsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('admin.words.create')->with([
             'categoriesCollection' => Category::all()->pluck('name', 'id'),
+            'categoryId' => $request->category_id,
         ]);
     }
 
@@ -58,13 +59,13 @@ class WordsController extends Controller
             $word = Word::create([
                 'word' => $data['word'],
                 'category_id' => $data['category'],
-                'meaning_id' => 0
+                'meaning_id' => 0,
             ]);
 
             foreach ($data['meaning'] as $key => $meaning) {
                 $meaning = Meaning::create([
                     'word_id' => $word->id,
-                    'content' => $meaning
+                    'content' => $meaning,
                 ]);
                 if ($key == 0) {
                     $word->meaning_id = $meaning->id;
@@ -79,7 +80,7 @@ class WordsController extends Controller
                     'Action' => trans('messages.create'),
                     'item' => trans_choice('messages.words', 1),
                 ]));
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
 
             return redirect()

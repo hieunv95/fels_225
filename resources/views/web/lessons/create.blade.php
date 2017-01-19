@@ -21,7 +21,7 @@
                                 {!! Form::hidden('count', $count, null) !!}
                             </div>
                             <div class="col-md-5 col-md-offset-2">
-                            @foreach ($word->meanings()->get()->random(4) as $meaning)
+                            @foreach ($word->meanings()->inRandomOrder()->get() as $meaning)
                                 {!! Form::radio('meanings', $meaning->id, null, [
                                     'required',
                                 ]) !!} {{ $meaning->content }} </br>

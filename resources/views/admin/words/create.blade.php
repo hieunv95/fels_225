@@ -29,7 +29,7 @@
                         <div class="{!! Form::showErrClass('category_id') !!}">
                             {!! Form::label('category', trans_choice('messages.categories', 1), ['class' => 'col-md-2 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::select('category', $categoriesCollection, null, [
+                                {!! Form::select('category', $categoriesCollection, $categoryId, [
                                     'class' => 'has-feedback form-group has-feedback-right list-group-item']) !!}
                                 {!! Form::showErrField('category') !!}
                             </div>

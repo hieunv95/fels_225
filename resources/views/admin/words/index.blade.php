@@ -13,7 +13,9 @@
         </div>
         <div class="pull-right">
             <a class="btn btn-primary"
-                href="{{ action('Admin\WordsController@create') }}">@lang('messages.add')</a>
+                href="{{ action('Admin\WordsController@create', ['category_id' => $categoryId]) }}">
+                @lang('messages.add')
+            </a>
         </div>
     </div>
     <div class="panel-body">
@@ -26,17 +28,17 @@
                         </td>
                         <td>
                             <a href="{{ action('Admin\WordsController@show', [
-                                'user' => $word->id]) }}">{{ $word->word }}</a>
+                                'word' => $word->id]) }}">{{ $word->word }}</a>
                         </td>
                         <td>
                             <a class="btn btn-warning"
-                                href="{{ action('Admin\WordsController@edit', ['user' => $word->id]) }}">
+                                href="{{ action('Admin\WordsController@edit', ['word' => $word->id]) }}">
                                 @lang('messages.edit')
                             </a>
                         </td>
                         <td>
                             @include('layouts.admin.includes._delete', [
-                                'action' => ['Admin\WordsController@destroy', 'user' => $word->id],
+                                'action' => ['Admin\WordsController@destroy', 'word' => $word->id],
                                 'message' => trans('messages.confirmDelete'),
                             ])
                         </td>
